@@ -15,8 +15,10 @@ def _convert_from_linear(image: np.ndarray) -> np.ndarray:
 def _apply_lift_gamma_gain_effect(image: np.ndarray, lift: np.ndarray,
                                   gamma: np.ndarray,
                                   gain: np.ndarray) -> np.ndarray:
+    LIFT_SCALE = 0.25
 
-    image = np.clip((image - 1.0) * (2.0 - (lift + 0.5)) + 1.0, 0.0, 1.0)
+    image = np.clip((image - 1.0) * (1.0 - LIFT_SCALE * (lift - 0.5)) + 1.0,
+                    0.0, 1.0)
     image = image * (gain + 0.5)
     image = np.clip(np.power(image, 1.0 / (gamma + 0.5)), 0.0, 1.0)
 
