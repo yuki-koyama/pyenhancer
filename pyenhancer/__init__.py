@@ -1,5 +1,4 @@
 import numpy as np
-from typing import List
 from skimage.color import rgb2hsv, hsv2rgb
 
 GAMMA_VALUE = 2.2
@@ -49,7 +48,7 @@ def _apply_lift_gamma_gain_effect(
     return image
 
 
-def get_labels() -> List[str]:
+def get_labels() -> list[str]:
     """Get labels of parameters."""
     return [
         "Brightness",
